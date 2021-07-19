@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Branch {
+  id: String!
+  name: String!
+  address: String!
+  contactNo: String!
+}
+
+type Query {
+  getAllBranches: [Branch!]!
+  branch(id: Int!): Branch!
+}
+
+type Mutation {
+  createBranch(createBranchInput: CreateBranchInput!): Branch!
+  updateBranch(updateBranchInput: UpdateBranchInput!): Branch!
+  removeBranch(id: Int!): Branch!
+}
+
+input CreateBranchInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateBranchInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
