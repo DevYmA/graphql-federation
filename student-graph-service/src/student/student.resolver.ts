@@ -4,6 +4,7 @@ import { Student } from './entities/student.entity';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
 import { Course } from './entities/course.entity';
+import { Branch } from './entities/branch.entity';
 
 @Resolver(() => Student)
 export class StudentResolver {
@@ -34,8 +35,14 @@ export class StudentResolver {
     return this.studentService.remove(id);
   }
 
-  @ResolveField()
+  @ResolveField((of) => Course)
   course(@Parent() student: Student) {
     return { _typename: "Course", id: student.courseId }
   }
+
+  @ResolveField((of) => Branch)
+  branch(@Parent() student: Student) {
+    return { _typename: "Branch", id: student.branchId }
+  }
+
 }

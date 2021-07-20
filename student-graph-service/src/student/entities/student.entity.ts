@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int, Directive, ID } from '@nestjs/graphql';
+import { Branch } from './branch.entity';
 import { Course } from './course.entity';
 
 @ObjectType()
@@ -17,6 +18,12 @@ export class Student {
   @Field(()=>Course)
   course?:Course
 
+  @Field(()=>Branch)
+  branch?:Branch
+
   @Field()
   courseId: string;
+
+  @Field()
+  branchId: string;
 }

@@ -34,7 +34,7 @@ export class CourseResolver {
   }
 
   @ResolveReference()
-  resolveReference(ref: { __typename: string, id: string }) {
+  resolvereference(ref: { __typename: string, id: string }) {
     return this.courseService.findOne(ref.id);
   }
 }

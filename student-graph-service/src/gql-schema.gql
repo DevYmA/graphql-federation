@@ -12,15 +12,22 @@ directive @requires(fields: String!) on FIELD_DEFINITION
 
 directive @provides(fields: String!) on FIELD_DEFINITION
 
+type Course {
+  id: ID!
+  students: [Student!]!
+}
+
 type Student {
   id: ID!
   firstName: String!
   lastName: String!
   course: Course!
+  branch: Branch!
   courseId: String!
+  branchId: String!
 }
 
-type Course {
+type Branch {
   id: ID!
   students: [Student!]!
 }

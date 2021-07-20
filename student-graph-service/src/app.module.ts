@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLFederationModule, GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { Branch } from './student/entities/branch.entity';
 import { Course } from './student/entities/course.entity';
 import { StudentModule } from './student/student.module';
 
@@ -11,7 +12,7 @@ import { StudentModule } from './student/student.module';
       {
         autoSchemaFile: join(process.cwd(), 'src/gql-schema.gql'),
         buildSchemaOptions: {
-          orphanedTypes: [Course]
+          orphanedTypes: [Course, Branch]
         }
       }
     )

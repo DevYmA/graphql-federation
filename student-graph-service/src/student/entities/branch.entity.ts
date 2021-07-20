@@ -1,19 +1,15 @@
 import { ObjectType, Field, Int, Directive, ID } from '@nestjs/graphql';
-
+import { Student } from './student.entity';
 
 @ObjectType()
+@Directive('@extends')
 @Directive('@key(fields: "id")')
 export class Branch {
 
   @Field((type) => ID)
-  id: string
+  @Directive('@external')
+  id: string;
 
-  @Field()
-  name: string
-
-  @Field()
-  address: string
-
-  @Field()
-  contactNo: string
+  @Field((type) => [Student])
+  students:Student[]
 }

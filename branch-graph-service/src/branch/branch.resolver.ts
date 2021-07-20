@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveReference } from '@nestjs/graphql';
 import { BranchService } from './branch.service';
 import { Branch } from './entities/branch.entity';
 import { CreateBranchInput } from './dto/create-branch.input';
@@ -31,5 +31,10 @@ export class BranchResolver {
   @Mutation(() => Branch)
   removeBranch(@Args('id', { type: () => Int }) id: number) {
     return this.branchService.remove(id);
+  }
+
+  @ResolveReference()
+  resolvereference(ref: { __typename: string, id: string }) {
+    return this.branchService.findOne(ref.id);
   }
 }

@@ -7,6 +7,7 @@ import { Student } from './student.entity';
 export class Course {
 
   @Field((type) => ID)
+  @Directive('@external')
   id: string;
 
   @Field((type) => [Student])

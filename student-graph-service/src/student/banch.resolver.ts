@@ -2,15 +2,17 @@ import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from '@nes
 import { StudentService } from './student.service';
 import { Student } from './entities/student.entity';
 import { Course } from './entities/course.entity';
+import { Branch } from './entities/branch.entity';
 
-@Resolver((of) => Course)
-export class CourseResolver {
+@Resolver((of) => Branch)
+export class BranchResolver {
   constructor(private readonly studentService: StudentService) { }
 
 
   @ResolveField((of) => [Student])
-  students(@Parent() course: Course): Promise<Student[]> {
-    return this.studentService.findForCourse(course.id);
+  students(@Parent() branch: Branch): Promise<Student[]> {
+    return this.studentService.findAllByBranchId(branch.id);
   }
+
 
 }

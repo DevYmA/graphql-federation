@@ -11,19 +11,22 @@ export class StudentService {
       id: "1",
       firstName: "Ricky",
       lastName: "Gremmy",
-      courseId: "1"
+      courseId: "1",
+      branchId: "1"
     },
     {
       id: "2",
       firstName: "Glean",
       lastName: "Misko",
-      courseId: "2"
+      courseId: "2",
+      branchId: "1"
     },
     {
       id: "3",
       firstName: "Serrah",
       lastName: "Ferarh",
-      courseId: "1"
+      courseId: "1",
+      branchId: "2"
     }
   ];
 
@@ -35,9 +38,12 @@ export class StudentService {
     return this.students;
   }
 
-  findAllByCourseId(id:string) {
-    let courses = this.findAll();
+  findAllByCourseId(id: string) {
     return this.students.filter(student => student.courseId == id);
+  }
+
+  async findAllByBranchId(id: string) {
+    return this.students.filter(student => student.branchId == id);
   }
 
   findOne(id: number | string) {
@@ -53,7 +59,8 @@ export class StudentService {
     return `This action removes a #${id} student`;
   }
 
-  async findForCourse(id:string){
+  async findForCourse(id: string) {
     return this.findAllByCourseId(id);
   }
+
 }
